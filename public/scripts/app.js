@@ -1,0 +1,85 @@
+"use strict";
+
+console.log('App.js is running!');
+
+var appRoot = document.getElementById("app");
+
+var app = {
+  title: "Indecision App",
+  subtitle: "Put your life in the hands of a computer",
+  options: ["one", "two"]
+};
+
+var template = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    "p",
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    "p",
+    null,
+    app.options.length > 0 ? "Here are your options:" : "No options!"
+  ),
+  React.createElement(
+    "ol",
+    null,
+    React.createElement(
+      "li",
+      null,
+      "Item one"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "Item one"
+    )
+  )
+);
+
+var user = {
+  name: "Zoltán",
+  age: 27,
+  location: "Budapest"
+};
+
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      "p",
+      null,
+      "Location: ",
+      location
+    );
+  } else {
+    return undefined;
+  }
+}
+
+var currentYear = 2019;
+
+var templateTwo = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    user.name ? user.name : 'Anonymus'
+  ),
+  user.age && user.age >= 18 && React.createElement(
+    "p",
+    null,
+    "Age: ",
+    user.age
+  ),
+  getLocation(user.location)
+);
+
+ReactDOM.render(template, appRoot);
