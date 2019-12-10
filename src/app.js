@@ -14,8 +14,10 @@ class IndecisionApp extends React.Component {
     this.setState(() => ({options: []}));
   }
 
-  handleDeleteOption(option) {
-    console.log('hdo', option);
+  handleDeleteOption(optionToRemove) {
+    this.setState((prevState) => ({
+      options: prevState.options.filter((option) => optionToRemove !== option)
+    }));
   }
 
   handlePick() {
@@ -28,11 +30,11 @@ class IndecisionApp extends React.Component {
       return 'Enter valid value to add item';
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option already exists'
-    } 
-    
+    }
+
     this.setState((prevState) =>  ({options: prevState.options.concat([option])}));
   }
-  
+
   render() {
     const subtitle = 'Put your life in the hands of a computer';
 
@@ -48,7 +50,7 @@ class IndecisionApp extends React.Component {
           handleDeleteOptions={this.handleDeleteOptions}
           handleDeleteOption={this.handleDeleteOption}
         />
-        <AddOption 
+        <AddOption
           handleAddOption={this.handleAddOption}
         />
       </div>
@@ -104,7 +106,13 @@ const Option = (props) => {
   return (
     <div>
       {props.optionText}
-      <button onClick={props.handleDeleteOption}>Remove</button>
+      <button
+        onClick={(e) => {
+          props.handleDeleteOption(props.optionText);
+        }}
+      >
+        Remove
+      </button>
     </div>
   );
 };
@@ -122,7 +130,7 @@ class AddOption extends React.Component {
 
     const option = e.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
-    
+
 
     this.setState(() => ({ error }));
 
