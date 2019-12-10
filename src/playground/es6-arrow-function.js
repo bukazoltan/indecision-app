@@ -1,16 +1,27 @@
-/* function square(x) {
-  return x * x;
-};
+// function square(x) {
+//   return x * x;
+// };
 
-const squareArrow = (x) => x * x;
+// console.log(square(3));
 
-console.log(squareArrow(8)); */
+// // const squareArrow = (x) => {
+// //   return x * x;
+// // };
 
-const getFirstName = (name) => name.split(' ')[0];
-const getFirstNameTwo = (name) => {
-  return name.split(' ')[0];
-}
+// const squareArrow = (x) => x * x;
 
-console.log(getFirstName("Zoltán Buka"));
+// console.log(squareArrow(4));
 
-console.log(getFirstNameTwo("Zoltán Buka"));
+
+// Challenge - Use arrow functions
+// getFirstName('Mike Smith') -> "Mike"
+// Create regular arrow function
+// Create arrow function using shorthand syntax
+
+// const getFirstName = (fullName) => {
+//   return fullName.split(' ')[0];
+// };
+
+const getFirstName = (fullName) => fullName.split(' ')[0];
+
+console.log(getFirstName('Andrew Mead'));
